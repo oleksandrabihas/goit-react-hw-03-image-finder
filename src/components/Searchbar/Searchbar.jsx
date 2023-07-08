@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import toast from 'react-hot-toast';
 import { Header, SearchForm, SearchFormButton, SearchFormButtonLabel, SearchFormInput } from './Searchbar.styled';
+import PropTypes from 'prop-types';
+import {CiSearch} from 'react-icons/ci'
 
 export class Searchbar extends Component {
   state = {
@@ -25,7 +27,9 @@ export class Searchbar extends Component {
       <Header className="searchbar">
         <SearchForm className="form" onSubmit={this.handleSubmit}>
           <SearchFormButton type="submit" className="button">
-            <SearchFormButtonLabel className="button-label"></SearchFormButtonLabel>
+            <SearchFormButtonLabel>
+              <CiSearch size="28" />
+            </SearchFormButtonLabel>
           </SearchFormButton>
 
           <SearchFormInput
@@ -43,3 +47,7 @@ export class Searchbar extends Component {
     );
   }
 }
+ 
+Searchbar.propTypes = {
+  onSubmitSearchImages: PropTypes.func.isRequired
+};
