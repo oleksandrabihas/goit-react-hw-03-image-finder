@@ -8,6 +8,7 @@ export class Modal extends Component {
   }
   componentWillUnmount() {
     window.removeEventListener('keydown', this.closeModal);
+    
   }
 
   closeModal = e => {

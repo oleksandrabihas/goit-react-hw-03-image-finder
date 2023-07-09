@@ -12,6 +12,7 @@ export class Searchbar extends Component {
   onChangeInput = e => {
     this.setState({ inputValue: e.target.value });
   };
+
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.inputValue.trim() === '') {
@@ -24,9 +25,9 @@ export class Searchbar extends Component {
 
   render() {
     return (
-      <Header className="searchbar">
-        <SearchForm className="form" onSubmit={this.handleSubmit}>
-          <SearchFormButton type="submit" className="button">
+      <Header >
+        <SearchForm onSubmit={this.handleSubmit}>
+          <SearchFormButton type="submit" >
             <SearchFormButtonLabel>
               <CiSearch size="28" />
             </SearchFormButtonLabel>
@@ -36,7 +37,6 @@ export class Searchbar extends Component {
             onChange={this.onChangeInput}
             id="searchInput"
             value={this.state.inputValue}
-            className="input"
             type="text"
             autoComplete="off"
             autoFocus

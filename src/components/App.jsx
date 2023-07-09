@@ -8,6 +8,7 @@ import { Modal } from './Modal/Modal';
 import toast, { Toaster } from 'react-hot-toast';
 import { animateScroll as scroll } from 'react-scroll';
 import { Wrapper } from './App.styled';
+
 export class App extends Component {
   state = {
     list: [],
@@ -43,7 +44,13 @@ export class App extends Component {
   }
 
   onSubmitSearchImages = query => {
-    this.setState({ query, list: [] });
+    this.setState(prevState => {
+      if (prevState.query === query) {
+        return null
+      } else {
+        return { query, list: [], page: 1 };
+      }
+    });
   };
 
   handleClickLoadMore = () => {
@@ -60,7 +67,7 @@ export class App extends Component {
   };
 
   onModalClose = () => {
-    this.setState({ isModalVisible: false });
+    this.setState({ isModalVisible: false, modalData: null });
     document.body.classList.remove('no-scroll');
   };
 
